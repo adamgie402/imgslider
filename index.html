@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Image autoslider</title>
+    <meta name="descripion" content="Simple and responsive image autoslider writen in pure javascript.">
+    <meta name="author" content="adamgie/adamgie402">
+    <!-- <link rel="stylesheet" type="text/css" href="css/style1_01.css"> -->
 </head>
 <body>
     <img name="imgSlider" src="img/fish.webp">
@@ -12,84 +15,8 @@
     <button onclick="prevImg()">prev</button>
     <button onclick="nextImg()">next</button>
     <button onclick="playPause()">play/pause</button>
-    <br>
-    
+    <br> 
 </body>
 </html>
 
-<script>
-    let images = [];
-    let time = 2000;
-    let i = images.length-1; //counter set on last slide (so, after start player go to img 0)
-    let player = undefined; //autoplayer setTimeout status
-
-    // list of images
-    images[0] = 'img/fish.webp';
-    images[1] = 'img/anchor.webp';
-    images[2] = 'img/stones.webp';
-
-    // changing images fn
-    function autoSlider() {
-        
-        // stopping player (to prevent multiple setTimeout)
-        // player = clearTimeout(player);
-
-        // counter - change image number
-        if (i < images.length - 1) {
-            i++;
-        } else {
-            i=0;
-        }
-        // set current img source
-        document.imgSlider.src = images[i];
-
-        //run autoSlider finction again after time
-        player = setTimeout("autoSlider()", time);
-    }
-
-    // play or pause autoslider
-    function playPause() {
-        if (player === undefined) {
-            autoSlider();
-        } else {
-            player = clearTimeout(player);
-        }
-    }
-
-
-    // handy image changing
-    function nextImg() {
-
-        // stopping player
-        player = clearTimeout(player);
-
-        if (i < images.length - 1) {
-            i++;
-        } else {
-            i=0;
-        }
-        console.log("f nextimg; i=" + i);
-        document.imgSlider.src = images[i];
-    }
-
-    function prevImg() {
-
-        // stopping player
-        player = clearTimeout(player);
-
-        if (i > 0) {
-            i--;
-        } else {
-            i=images.length-1;
-        }
-        document.imgSlider.src = images[i];
-        console.log("f previmg; i=" + i);
-    }
-
-
-
-
-    // run slider finction onload
-    window.onload = autoSlider();
-
-</script>
+<script src="js/slider.js"></script>
