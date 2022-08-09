@@ -15,5 +15,30 @@
     let i = 0;
     let images = [];
     let time = 1000;
-    
+
+    // list of images
+    images[0] = 'img/fish.webp';
+    images[1] = 'img/anchor.webp';
+    images[2] = 'img/stones.webp';
+
+    function slider() {
+        console.log("F slider");
+        
+        // set current img source
+        document.imgSlider.src = images[i];
+
+        // change image number
+        if (i < images.length - 1) {
+            i++;
+        } else {
+            i=0;
+        }
+
+        //run slider finction again after time
+        setTimeout("slider()", time);
+    }
+
+    // run slider finction onload
+    window.onload = slider();
+
 </script>
