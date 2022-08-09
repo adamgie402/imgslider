@@ -7,22 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    <img name="imgSlider">
+    <img name="imgSlider" src="img/fish.webp">
+    <br>
+    <button onclick="prevImg()">prev</button>
+    <button onclick="nextImg()">next</button>
+    <br>
+    
 </body>
 </html>
 
 <script>
     let i = 0;
     let images = [];
-    let time = 1000;
+    let time = 2000;
 
     // list of images
     images[0] = 'img/fish.webp';
     images[1] = 'img/anchor.webp';
     images[2] = 'img/stones.webp';
 
+    // changing images fn
     function slider() {
-        console.log("F slider");
         
         // set current img source
         document.imgSlider.src = images[i];
@@ -39,6 +44,28 @@
     }
 
     // run slider finction onload
-    window.onload = slider();
+    // window.onload = slider();
+
+    function nextImg() {
+        if (i < images.length - 1) {
+            i++;
+        } else {
+            i=0;
+        }
+        console.log("f nextimg; i=" + i);
+        document.imgSlider.src = images[i];
+    }
+
+    function prevImg() {
+        if (i > 0) {
+            i--;
+        } else {
+            i=images.length-1;
+        }
+        document.imgSlider.src = images[i];
+        console.log("f previmg; i=" + i);
+    }
+
+    // window.onload = nextImg();
 
 </script>
